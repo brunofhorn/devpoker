@@ -8,6 +8,7 @@ import { GameContext } from '../../contexts/GameContext';
 import { GameType, IPlayer } from '../../interfaces';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { moveToSeat } from '../../services/players';
 
 export default function Game() {
   const router = useRouter();
@@ -21,9 +22,9 @@ export default function Game() {
       },
     });
 
-    console.log(data);
+    let playersSeated = await moveToSeat(data);
 
-    setPlayers(data);
+    setPlayers(playersSeated);
   };
 
   useEffect(() => {

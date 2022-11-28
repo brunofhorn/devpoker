@@ -25,6 +25,7 @@ export interface IPlayer {
   vote?: number;
   emoji?: string;
   area?: string | 'top' | 'right' | 'bottom' | 'left';
+  status?: Status | null;
 }
 
 export interface IPlayerGame {

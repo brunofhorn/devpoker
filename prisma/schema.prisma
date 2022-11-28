@@ -14,11 +14,21 @@ model Game {
   gameType  String
   createdAt DateTime     @default(now())
   players   PlayerGame[]
+  rounds    Round[]
+}
+
+model Round {
+  id          String @id @default(uuid())
+  average     Int?
+  roundStatus String
+  gameId      String
+  game        Game   @relation(fields: [gameId], references: [id])
 }
 
 model Player {
   id    String       @id @default(uuid())
   name  String
+  vote  Int          @default(0)
   games PlayerGame[]
 }
 
