@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 
 export interface IGameContext {
+  gameId: string;
+  setGameId: (newState: string) => void;
   isPlayersLoading: boolean;
   setIsPlayersLoading: (newState: boolean) => void;
   players: IPlayer[] | [];
@@ -17,16 +19,17 @@ export interface ITableArea {
 }
 
 export interface IPlayer {
-  id: number;
+  playerId: number;
   name: string;
+  creator: boolean;
   vote?: number;
   emoji?: string;
-  area?: 'top' | 'right' | 'bottom' | 'left';
+  area?: string | 'top' | 'right' | 'bottom' | 'left';
 }
 
-export interface IPlayerCard {
-  player: IPlayer;
-  game: IGame;
+export interface IPlayerGame {
+  playerId: string;
+  gameId: string;
 }
 
 export interface IGame {

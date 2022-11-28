@@ -2,6 +2,8 @@ import { createContext, useState } from 'react';
 import { IGameContext, IPlayer, IGameProvider } from '../interfaces';
 
 const initialValue = {
+  gameId: '',
+  setGameId: () => {},
   isPlayersLoading: true,
   setIsPlayersLoading: () => {},
   players: [],
@@ -15,10 +17,13 @@ export const GameProvider = ({ children }: IGameProvider) => {
     initialValue.isPlayersLoading
   );
   const [players, setPlayers] = useState<IPlayer[]>(initialValue.players);
+  const [gameId, setGameId] = useState(initialValue.gameId);
 
   return (
     <GameContext.Provider
       value={{
+        gameId,
+        setGameId,
         isPlayersLoading,
         setIsPlayersLoading,
         players,
